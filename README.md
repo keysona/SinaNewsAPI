@@ -6,7 +6,9 @@
 保存在一个WordNews数组里面。
 ## 依赖
 
-**json**  **okio**  **okhttp**
+* **json**  
+* **okio**  
+* **okhttp**
 
 ##目前可以获取的新闻类型： <br>
  * 最新
