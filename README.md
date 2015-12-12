@@ -21,7 +21,7 @@
 ```java
   SinaAPI test = new SinaAPI test = new SinaAPI();
  		WordNews[] news = test.getNews(SinaAPI.EXTERNAL_NEWS, 1);
- 		for(int i = 0;i&lt;news.length;i++){
+ 		for(int i = 0;i < news.length;i++){
  			System.out.println("*****************");
  			System.out.println(news[i]);
  			System.out.println("title:"+news[i].getTitle());
