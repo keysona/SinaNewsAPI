@@ -1,9 +1,14 @@
-# SinaNewsAPI 0.1
+# SinaNewsAPI 0.2
+更新说明：
+增加了一个getImageUrl()方法，来获取每条新闻的图片。
+若没有图片，返回空字符串。
+# SinaNewsAPI
 解析新浪新闻后台，获取相关新闻信息。
 
 支持按页获取，每次返回25或35条新闻。
 
 保存在一个WordNews数组里面。
+
 ## 依赖
 
 * **json**  
@@ -29,6 +34,7 @@
 			System.out.println("date:"+news[i].getDate());
  			System.out.println("source:"+news[i].getSource());
  			System.out.println("url:"+news[i].getUrl());
+ 			System.out.println("image_url:" + news[i].getImageUrl());
  			System.out.println("comment:"+news[i].getComment());
  		}
  ```
@@ -41,6 +47,7 @@
   source :钱江晚报
   summary :她虽然个子小小外表柔美但个性非常坚毅，学习目标明确。
   url :http://news.sina.cn/sh/2015-12-12/detail-ifxmpnqi6359375.d.html
+  image_url : http://k.sinaimg.cn/n/news/transform/20151220/zWyd-fxmttcn5008302.jpg/w120h90l50t1a7e.jpg
   comment :5423
   ...
 ```
