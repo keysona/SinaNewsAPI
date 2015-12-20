@@ -27,6 +27,7 @@ import com.keysona.WordNews;
  *			System.out.println("date:"+news[i].getDate());
  *			System.out.println("source:"+news[i].getSource());
  *			System.out.println("url:"+news[i].getUrl());
+ *          System.out.println("image_url"+news[i].getImageUrl());
  *			System.out.println("comment:"+news[i].getComment());
  *		}
  *</pre>
@@ -38,6 +39,7 @@ import com.keysona.WordNews;
  * date :今天 07:19
  * source :钱江晚报
  * summary :她虽然个子小小外表柔美但个性非常坚毅，学习目标明确。
+ * image_url : image_url : http://k.sinaimg.cn/n/mil/transform/20151219/5XZX-fxmttcq1782637.jpg/w120h90l50t1877.jpg
  * url :http://news.sina.cn/sh/2015-12-12/detail-ifxmpnqi6359375.d.html
  * comment :5423
  *</pre>
@@ -54,7 +56,7 @@ public class SinaAPI {
 	 * 最新新闻
 	 */
 	public static final int TOP_NEWS = 0;
-	private static final String TOP_URL = "http://interface.sina.cn/ent/feed.d.json?ch=mil&col=mil&page=";
+	private static final String TOP_URL = "http://interface.sina.cn/news/feed_top_news.d.json?&page=";
 	
 	//国际新闻
 	/**
@@ -114,8 +116,9 @@ public class SinaAPI {
 	}
 	
 	private void test(){
-		WordNews[] news = this.getNews(INTERNAL_NEWS, 3);
+		WordNews[] news = this.getNews(SinaAPI.TOP_NEWS, 1);
 		for(int i = 0;i<news.length;i++){
+			System.out.println("计数:"+i);
 			System.out.println(news[i]);
 		}
 		System.out.println("新闻数量:"+news.length);

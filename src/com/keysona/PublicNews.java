@@ -19,6 +19,7 @@ public class PublicNews extends WordNews {
     	
     }
     public PublicNews(JSONObject tmp){
+    	System.out.println(tmp);
 		this.date = get(tmp, "cTime", "str");
 		title = get(tmp, "title", "str");
 		stitle = get(tmp, "stitle", "str");
@@ -26,6 +27,7 @@ public class PublicNews extends WordNews {
 		summary = get(tmp, "summary", "str");
 		url = get(tmp, "URL","str");
 		comment = get(tmp, "comment", "int");
+		image_url = getImageURL(tmp);
     }
     
     private String get(JSONObject tmp,String key,String type){
@@ -41,6 +43,22 @@ public class PublicNews extends WordNews {
     		return get(a1, "total", "int");
     	}
     	return "";
+    }
+    
+    private String getImageURL(JSONObject tmp){
+    	JSONObject allPics = tmp.getJSONObject("allPics");
+    	JSONArray array = allPics.getJSONArray("pics");
+    	System.out.println(array);
+    	if(array.length()>=1){
+    		JSONObject img = array.getJSONObject(0);
+    		String temp = img.getString("note");
+    		if("".equals(temp)){
+    			temp = img.getString("imgurl");
+    		}
+    		return temp;
+    	}else{
+    		return "";
+    	}
     }
     
     OkHttpClient client = new OkHttpClient();
@@ -67,6 +85,7 @@ public class PublicNews extends WordNews {
 			JSONArray array = data.getJSONArray("list");
 			for(int i = 0;i<array.length();i++){
 				JSONObject tmp = array.getJSONObject(i);
+//				System.out.println(tmp);
 				PublicNews news = new PublicNews(tmp);
 				System.out.println(news.toString());
 			}

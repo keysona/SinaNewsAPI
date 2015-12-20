@@ -26,6 +26,7 @@ public class FeedTopNews extends WordNews {
     	stitle = get(tmp, "wap_title", "str");
     	summary = get(tmp, "intro", "str");
     	comment = get(tmp, "comment", "int");
+    	image_url = get(tmp, "img", "str");
     }
     
     private String get(JSONObject tmp,String key,String type){
@@ -55,16 +56,17 @@ public class FeedTopNews extends WordNews {
     public static void main(String[] args){
     	FeedTopNews test = new FeedTopNews();
     	try{
-    		JSONObject resp = new JSONObject(test.run("http://interface.sina.cn/ent/feed.d.json?ch=mil&col=mil&show_num=10&page=3"));
+    		JSONObject resp = new JSONObject(test.run("http://interface.sina.cn/ent/feed.d.json?ch=mil&col=mil&page=1"));
     		JSONArray array = resp.getJSONArray("data");
     		for(int i = 0;i<array.length();i++){
     			JSONObject tmp = array.getJSONObject(i);
+    			System.out.println("计数:"+i);
+    			System.out.println(tmp);
     			FeedTopNews news = new FeedTopNews(tmp);
     			System.out.println(news.toString());
     		}
     	}catch(IOException e){
     		e.printStackTrace();
     	}
-
 	}
 }
